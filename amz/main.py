@@ -51,7 +51,6 @@ def extract_data(url1):
     time.sleep(3)
     r = body.get_attribute('innerHTML')
     soup = BeautifulSoup(r, "html.parser")
-
     try:
         name = soup.find('span', {'id': 'productTitle'}).text.strip()
     except:
@@ -62,7 +61,12 @@ def extract_data(url1):
         time.sleep(1)
         soup = BeautifulSoup(r.text, "html.parser")
         name = soup.find('span', {'id': 'productTitle'}).text.strip()
-
+    r = re.compile(r"([PL])(\w+)")
+    p = re.findall(r,name)
+    try:
+        sku = p[0][0] + p[0][1]
+    except:
+        sku = ''
     price1 = soup.find('span', {'class': 'a-price-whole'}).text.strip().split('.')[0]
 
     price2 = soup.find('span', {'class': 'a-price-fraction'}).text.strip()
@@ -102,6 +106,7 @@ def extract_data(url1):
     base_image = list_images[0]
     add_images = ','.join(list_images[1:])
     data = {
+        'sku': sku,
         'name': name,
         'link_url': url,
         'price': price,
