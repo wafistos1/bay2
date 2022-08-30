@@ -34,10 +34,10 @@ def open_driver():
     options.add_argument(f'user-agent={userAgent}')
     #options.add_argument("--start-maximized")
     #driver = webdriver.Firefox()ons.add_argument("--headless")
-    driver = webdriver.Firefox(firefox_options=options)
+    driver = webdriver.Firefox(options=options)
     return driver
 
-list_product  = pd.read_excel('/home/wafistos/Documents/Projects/scaping_wafi/djangoSripte/media/Midas/urls/wafi-midas_update_products_url_.xlsx')
+list_product  = pd.read_excel('/home/wafi/Documents/Baytonia/djangoSripte/media/Midas/admin-midas_update_products_url_.xlsx')
 list_to_products = []
 
 for index, row in list_product.iterrows():
@@ -112,7 +112,7 @@ name_excel = f'midas_update_{d1}-2.xlsx'
 
 driver = open_driver()
 
-df = pd.read_excel('/home/wafistos/Documents/Projects/scaping_wafi/Scraping_Midas/Categories/midas1_model.xlsx')
+df = pd.read_excel('/home/wafi/Documents/Baytonia/Scraping_Midas/Categories/midas1_model.xlsx')
 #ForLoop main
 for i, product in enumerate(list_to_products[1001: 2000]):
 #for i, product in enumerate(list_to_products):

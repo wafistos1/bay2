@@ -18,15 +18,15 @@ import re, logging
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
 
 urls = [
-    {'cat1': 'لوحات جدارية', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/387013/'},
-    {'cat1': 'اطقم كنب', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/350703/'},
-    {'cat1': 'طاولات طعام', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/350681/'},
-    {'cat1': 'جلسات خشب الزان', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/331554/'},
+    # {'cat1': 'لوحات جدارية', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/387013/'},
+    # {'cat1': 'اطقم كنب', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/350703/'},
+    # {'cat1': 'طاولات طعام', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/350681/'},
+    # {'cat1': 'جلسات خشب الزان', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/331554/'},
     {'cat1': 'جلسات خشب', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/301743/'},
     {'cat1': 'جلسات حديد وخشب', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/301745/'},
-    {'cat1': 'اغطية حماية', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/315518/'},
-    {'cat1': 'كراسي وطاولات', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/303576/'},
-    # {'cat1': '', 'cat2': '', 'cat3': '', 'url':''},
+    # {'cat1': 'اغطية حماية', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/315518/'},
+    # {'cat1': 'كراسي وطاولات', 'cat2': '', 'cat3': '', 'url':'https://astore-alanar.com/categories/303576/'},
+    # # {'cat1': '', 'cat2': '', 'cat3': '', 'url':''},
 ]
 
 def get_data(url):

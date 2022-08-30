@@ -9,13 +9,13 @@ two_month = two_month.strftime("%m/%d/%Y")
 today = datetime.today().strftime("%d/%m/%Y")
 today1 = datetime.today().strftime("%d_%m_%Y")
 
-df1 = pd.read_excel('/home/wafistos/Documents/Projects/scaping_wafi/Midas1/midas_update_23-08-2022-1.xlsx')
-df2 = pd.read_excel('/home/wafistos/Documents/Projects/scaping_wafi/Midas1/midas_update_23-08-2022-2.xlsx')
-df3 = pd.read_excel('/home/wafistos/Documents/Projects/scaping_wafi/Midas1/midas_update_23-08-2022-3.xlsx')
-df4 = pd.read_excel('/home/wafistos/Documents/Projects/scaping_wafi/Midas1/midas_update_23-08-2022-4.xlsx')
-df5 = pd.read_excel('/home/wafistos/Documents/Projects/scaping_wafi/Midas1/midas_update_23-08-2022-5.xlsx')
-df6 = pd.read_excel('/home/wafistos/Documents/Projects/scaping_wafi/Midas1/midas_update_23-08-2022-6.xlsx')
-df7 = pd.read_excel('/home/wafistos/Documents/Projects/scaping_wafi/Midas1/midas_update_23-08-2022-7.xlsx')
+df1 = pd.read_excel('midas_update_30-08-2022-1.xlsx')
+df2 = pd.read_excel('midas_update_30-08-2022-2.xlsx')
+df3 = pd.read_excel('midas_update_30-08-2022-3.xlsx')
+df4 = pd.read_excel('midas_update_30-08-2022-4.xlsx')
+df5 = pd.read_excel('midas_update_30-08-2022-5.xlsx')
+df6 = pd.read_excel('midas_update_30-08-2022-6.xlsx')
+df7 = pd.read_excel('midas_update_30-08-2022-7.xlsx')
 
 
 
@@ -120,7 +120,7 @@ df['price1'] = df['price'] * 1.15
 # df['categories2'] = df['category2']
 # df['categories3'] = df['category3']
 # Add Categories Columns
-cats = pd.read_excel("/home/wafistos/Documents/Projects/scaping_wafi/Scraping_Midas/Categories/Midas category(1).xlsx")
+cats = pd.read_excel("Categories/Midas category(1).xlsx")
 list_cats = []
 for index, row in cats.iterrows():
     list_cats.append([row['Name of category '], row['Num of category '], row['description']]) 

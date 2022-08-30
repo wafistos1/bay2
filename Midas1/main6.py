@@ -37,7 +37,7 @@ def open_driver():
     driver = webdriver.Firefox(firefox_options=options)
     return driver
 
-list_product  = pd.read_excel('/home/wafistos/Documents/Projects/scaping_wafi/djangoSripte/media/Midas/urls/wafi-midas_update_products_url_.xlsx')
+list_product  = pd.read_excel('/home/wafi/Documents/Baytonia/djangoSripte/media/Midas/admin-midas_update_products_url_.xlsx')
 list_to_products = []
 
 for index, row in list_product.iterrows():
@@ -111,7 +111,7 @@ count = 0
 d1 = date.today().strftime("%d-%m-%Y")
 name_excel = f'midas_update_{d1}-7.xlsx'
 driver = open_driver()
-df = pd.read_excel('/home/wafistos/Documents/Projects/scaping_wafi/Scraping_Midas/Categories/midas1_model.xlsx')
+df = pd.read_excel('/home/wafi/Documents/Baytonia/Scraping_Midas/Categories/midas1_model.xlsx')
 
 #ForLoop main
 for i, product in enumerate(list_to_products[6000: ]):
@@ -136,6 +136,7 @@ for i, product in enumerate(list_to_products[6000: ]):
         r = driver.find_element_by_tag_name('body').get_attribute('innerHTML')
         soup1 = BeautifulSoup(r, 'html.parser')
     except:
+        
         driver = open_driver()
         time.sleep(2)
         driver.get(str(url))

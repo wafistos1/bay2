@@ -61,7 +61,10 @@ list_urls = [
     {'cat1': 'أطفال', 'cat2': '', 'cat3': '', 'url': 'https://www.aldarest.sa/product-category/%d8%a3%d9%81%d8%b6%d9%84-%d8%a7%d9%84%d9%85%d9%86%d8%aa%d8%ac%d8%a7%d8%aa-%d9%81%d9%8a-%d8%a7%d9%84%d8%b1%d8%a6%d9%8a%d8%b3%d9%8a%d8%a9/%d8%a3%d8%b7%d9%81%d8%a7%d9%84/'},
     {'cat1': 'غرف النوم', 'cat2': '', 'cat3': '', 'url': 'https://www.aldarest.sa/product-category/abedroom/'},
     {'cat1': 'غرفة الطعام', 'cat2': '', 'cat3': '', 'url': 'https://www.aldarest.sa/product-category/adining/'},
-    # {'cat1': '', 'cat2': '', 'cat3': '', 'url': ''},
+    {'cat1': 'ورق جدران للفنادق', 'cat2': '', 'cat3': '', 'url': 'https://www.aldarest.sa/use/hotels/'},
+    {'cat1': 'العروض', 'cat2': '', 'cat3': '', 'url': 'https://www.aldarest.sa/product-category/%d9%85%d9%86%d8%aa%d8%ac%d8%a7%d8%aa-%d9%85%d8%ae%d8%b5%d8%b5%d8%a9/'},
+    {'cat1': 'المطابخ', 'cat2': '', 'cat3': '', 'url': 'https://www.aldarest.sa/product-category/%d8%a7%d9%84%d9%85%d8%b7%d8%a7%d8%a8%d8%ae/'},
+    {'cat1': 'الحمامات', 'cat2': '', 'cat3': '', 'url': 'https://www.aldarest.sa/product-category/abathroom/'},
     # {'cat1': '', 'cat2': '', 'cat3': '', 'url': ''},
 ]
 
@@ -89,6 +92,7 @@ def scrap_url_product(url1):
             break
     logging.info( 'Scrape Categorie Done --> Next .')
     return data
+
 df = pd.read_excel('aldarest_url_model.xlsx')
 for i, url in enumerate(list_urls):
     logging.info('Count: %s', i)
