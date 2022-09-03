@@ -25,7 +25,7 @@ logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
 
 def return_ele(name, soup):
     try:
-        return soup.find('', text=re.compile(name)).text.replace(name, '').replace('\u200e', '').strip()
+        return soup.find('article', {'class': 'article article--main article--product-details mb-50'}).find('', text=re.compile(name)).text.replace(name, '').replace('\u200e', '').strip()
     except:
         return ''
 
@@ -37,11 +37,18 @@ class Product:
     special_price : str = ''
     description : str = ''
     base_image : str =  ''
-    add_image: str = ''
+    add_images: str = ''
     brand: str = ''
+    product_size1: str = ''
+    # guarant: str = ''
+    manufacturer: str = ''
+    capacity: str = ''
+    power: str = ''
+    lenght: str = ''
     free_colors: str = ''
     product_size: str = ''
     raw_materials: str = ''
+    list_columns: str = ''
     cat1 : str = ''
     cat2 : str = ''
     cat3 : str = ''
@@ -91,8 +98,18 @@ def scrape_data(url1):
     product.brand = return_ele('العلامة التجارية:', soup)
     product.product_size = return_ele('أبعاد المنتج:', soup)
     product.raw_materials = return_ele('المادة:', soup)
+    product.product_size1 = return_ele('الأبعاد:', soup)
+    # product.guarantee = return_ele('ضمان', soup)
+    product.manufacturer = return_ele('بلد الصنع:', soup)
+    product.capacity = return_ele('الحجم:', soup)
+    product.power = return_ele('الجهد:', soup)
+    product.lenght = return_ele('العرض:', soup)
+    columns = soup.find('article', {'class': 'article article--main article--product-details mb-50'}).find_all('p')
+    _columns = [column.text.strip() for column in columns if column.text.strip() != '']
+    if len(_columns) > 7:
+        _columns = _columns[:8]
+    product.list_columns = '///'.join(_columns)
 
-    
     images  = soup.find_all('li', {'class': 'splide__slide'})
     len(images)
     list_images = [img.find('img')['data-splide-lazy'] for img in images if img.find('img')]
@@ -107,6 +124,6 @@ for i, url in enumerate(list_urls):
     data = scrape_data(url)
     df1 = pd.DataFrame([data])
     df = pd.concat([df, df1], ignore_index=True)
-    df.to_excel('bugshan_product_update.xlsx')
+    df.to_excel('bugshan_product_update_tv.xlsx')
 logging.info('Scraping products Done..')
 

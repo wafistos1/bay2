@@ -48,10 +48,14 @@ class Product:
     name : str = ''
     price : str = ''
     product_size : str = ''
+    size : str = ''
+    manufacturer: str = ''
+    cotton: str = ''
     content : str = ''
     content1 : str = ''
     content2 : str = ''
     washing_instructions : str = ''
+    capacity: str = ''
     description : str = ''
     base_image : str =  ''
     add_images : str = ''
@@ -95,7 +99,22 @@ def scrape_data(url1):
     product.content2 = return_content(soup, 'المحتويات:', 'تعليمات الغسيل:')
     product.content1 = return_content(soup,'مزايا مجموعات أغطية اللحاف القطنية: ', 'المحتويات:')
     product.content = return_content(soup,'طقم مفارش مفرد (نفر ونص) 4 قطع', 'مزايا مجموعات أغطية اللحاف القطنية: ')
-
+    try:
+        product.capacity = soup.find('div', {'class': 'product-detials__desc'}).find('', string=re.compile('الحجم')).next_element.text.strip()
+    except:
+        pass
+    try:
+        product.size = soup.find('div', {'class': 'product-detials__desc'}).find('', text=re.compile('القياس:')).next_element.text.strip()
+    except:
+        pass
+    try:
+        product.cotton = soup.find('div', {'class': 'product-detials__desc'}).find('', text=re.compile('قطن'))
+    except:
+        pass
+    try:
+        product.manufacturer = soup.find('div', {'class': 'product-detials__desc'}).find('', text=re.compile('صناعة'))
+    except:
+        pass
     # Scrap details product
     try:
         product.washing_instructions  = soup.find('p', text=re.compile('تعليمات الغسيل:')).next_element.next_element.next_element.text.strip()
@@ -124,4 +143,4 @@ for i, url in enumerate(list_urls):
     df1 = pd.DataFrame([data])
     df = pd.concat([df, df1], ignore_index=True)
     df.to_excel('karacahomesa_product_update2.xlsx')
-
+logging.info('Scraping Products Done..')
