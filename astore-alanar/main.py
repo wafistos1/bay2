@@ -20,6 +20,14 @@ import re, logging
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
 
 
+options = Options()
+ua = UserAgent()
+userAgent = ua.random
+print(userAgent)
+options.add_argument(f'user-agent={userAgent}')
+#options.add_argument("--headless")
+driver = webdriver.Firefox(firefox_options=options)
+
 urls = pd.read_excel('astore_url_update.xlsx')
 list_urls = []
 for index, row in urls.iterrows():
@@ -39,10 +47,9 @@ def scrape_data(url1):
     cat3 = url1['cat3']
     url = url1['url']
     logging.info(f'URL: {url}')
-    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
-    cookies = {'session': '134-8225175-0355220'}
-    r = requests.get(url, headers=headers, cookies=cookies)
-    soup = BeautifulSoup(r.content, "html.parser")
+    driver.get(url)
+    r = driver.page_source
+    soup = BeautifulSoup(r, "html.parser")
     name = soup.find('section').find('h1').text.strip()
     price = soup.find('del', {'class': 'product-formatted-price-old'}).text.replace('ر.س', '').strip()
     special_price = soup.find('h1', {'class': 'product-formatted-price'}).text.replace('ر.س', '').strip()
