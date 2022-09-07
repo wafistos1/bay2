@@ -18,7 +18,7 @@ from random import randint
 import pandas as pd
 import numpy as np
 from typing import List, Optional
-from pydantic import BaseModel
+# from pydantic import BaseModel
 
 #pip install requests pandas openpyxl selenium=3.14 fake_useragent bs4
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.INFO)
@@ -95,7 +95,10 @@ def scrape_data(url1):
         product.price = soup.find('div', {'price-wrapper-info'}).text.replace('ر.س', '').strip()
     product.description = soup.find('article', {'class': 'article--product-details'}).text.strip()
     product.free_colors = return_ele('اللون\u200e:', soup)
-    product.brand = return_ele('العلامة التجارية:', soup)
+    try:
+        product.brand = product.brand = soup.find('a', {'brand-logo'})['title']
+    except:
+        product.brand = return_ele('العلامة التجارية:', soup)
     product.product_size = return_ele('أبعاد المنتج:', soup)
     product.raw_materials = return_ele('المادة:', soup)
     product.product_size1 = return_ele('الأبعاد:', soup)
@@ -104,6 +107,11 @@ def scrape_data(url1):
     product.capacity = return_ele('الحجم:', soup)
     product.power = return_ele('الجهد:', soup)
     product.lenght = return_ele('العرض:', soup)
+    # if product.brand == None:
+    #     try:
+    #         product.brand = soup.find('a', {'brand-logo'})['title']
+    #     except:
+    #         pass
     columns = soup.find('article', {'class': 'article article--main article--product-details mb-50'}).find_all('p')
     _columns = [column.text.strip() for column in columns if column.text.strip() != '']
     if len(_columns) > 7:
@@ -118,12 +126,14 @@ def scrape_data(url1):
     return  product.__dict__
 
 
+
+# Main function
 df = pd.read_excel('bugshan_product_model.xlsx')
 for i, url in enumerate(list_urls):
-    logging.info('Count: %s', i)
+    logging.info('Count: %s / %s', i, len(list_urls))
     data = scrape_data(url)
     df1 = pd.DataFrame([data])
     df = pd.concat([df, df1], ignore_index=True)
-    df.to_excel('bugshan_product_update_tv.xlsx')
+    df.to_excel('bugshan_product_update.xlsx')
 logging.info('Scraping products Done..')
 
