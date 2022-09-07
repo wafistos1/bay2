@@ -37,7 +37,7 @@ def open_driver():
     driver = webdriver.Firefox(options=options)
     return driver
 
-list_product  = pd.read_excel('/home/wafi/Documents/Baytonia/djangoSripte/media/Midas/admin-midas_update_products_url_.xlsx')
+list_product  = pd.read_excel('/home/wafi/Documents/Myprojects/djangoSripte/media/Midas/admin-midas_update_products_url_.xlsx')
 list_to_products = []
 
 for index, row in list_product.iterrows():
@@ -108,11 +108,11 @@ def return_details(value, list_dic):
         return val
 count = 0
 d1 = date.today().strftime("%d-%m-%Y")
-name_excel = f'midas_update_{d1}-2.xlsx'
+name_excel = f'midas_update_2.xlsx'
 
 driver = open_driver()
 
-df = pd.read_excel('/home/wafi/Documents/Baytonia/Scraping_Midas/Categories/midas1_model.xlsx')
+df = pd.read_excel('/home/wafi/Documents/Myprojects/Baytonia/bay2/Scraping_Midas/Categories/midas1_model.xlsx')
 #ForLoop main
 for i, product in enumerate(list_to_products[1001: 2000]):
 #for i, product in enumerate(list_to_products):
@@ -156,19 +156,19 @@ for i, product in enumerate(list_to_products[1001: 2000]):
         sku = 'DAS-' + sku 
         #url_key = (f'{sku}-{name}').replace(',', '-').replace('*', '-').replace('،', '-').replace('/', '-').replace('%', '').replace('"', '')
         url_key = sku + '-' + name
-        special_price =  ''
-        price = driver.find_element_by_xpath('//span[@class="price"]').text.replace('٫', '.').replace('٬', '').replace('SAR', '').strip()
+        special_price =  soup1.find('span', {'data-price-type': 'finalPrice'})['data-price-amount']
+        price =  soup1.find('span', {'data-price-type': 'oldPrice'})['data-price-amount']
         combination = soup1.find('div', {'itemprop': 'description'}).text.strip()
+        print('Combination', type(combination))
+        combination_product_size_list = combination.split('\n')
         #combination = driver.find_element_by_xpath('//div[@itemprop="description"]').text
     except:
         print('Error combination...')
         continue
     try:
-        combination_product_size_list = combination.split('\n')
         combination_product_size_list1 = driver.find_element_by_xpath('//div[@itemprop="description"]').text.split('\n\n')
         combination = combination_product_size_list[1].replace('♦', '')
     except:
-        combination_product_size_list = combination.split('\n')
         combination_product_size_list1 = driver.find_element_by_xpath('//div[@itemprop="description"]').text.split(':')
         combination = combination_product_size_list[0].replace('♦', '')
         

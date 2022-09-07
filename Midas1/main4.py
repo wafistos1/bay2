@@ -23,9 +23,6 @@ import string
 from collections import Counter
 
 
-
-
-
 def open_driver():
     options = Options()
     ua = UserAgent()
@@ -37,7 +34,7 @@ def open_driver():
     driver = webdriver.Firefox(options=options)
     return driver
 
-list_product  = pd.read_excel('/home/wafi/Documents/Baytonia/djangoSripte/media/Midas/admin-midas_update_products_url_.xlsx')
+list_product  = pd.read_excel('/home/wafi/Documents/Myprojects/djangoSripte/media/Midas/admin-midas_update_products_url_.xlsx')
 list_to_products = []
 
 for index, row in list_product.iterrows():
@@ -108,11 +105,11 @@ def return_details(value, list_dic):
         return val
 count = 0
 d1 = date.today().strftime("%d-%m-%Y")
-name_excel = f'midas_update_{d1}-5.xlsx'
+name_excel = f'midas_update_5.xlsx'
 
 driver = open_driver()
 
-df = pd.read_excel('/home/wafi/Documents/Baytonia/Scraping_Midas/Categories/midas1_model.xlsx')
+df = pd.read_excel('/home/wafi/Documents/Myprojects/Baytonia/bay2/Scraping_Midas/Categories/midas1_model.xlsx')
 #ForLoop main
 for i, product in enumerate(list_to_products[4001: 5000]):
 #for i, product in enumerate(list_to_products):
@@ -154,8 +151,8 @@ for i, product in enumerate(list_to_products[4001: 5000]):
         sku = 'DAS-' + sku 
         #url_key = (f'{sku}-{name}').replace(',', '-').replace('*', '-').replace('،', '-').replace('/', '-').replace('%', '').replace('"', '')
         url_key = sku + '-' + name
-        special_price =  ''
-        price = driver.find_element_by_xpath('//span[@class="price"]').text.replace('٫', '.').replace('٬', '').replace('SAR', '').strip()
+        special_price =  soup1.find('span', {'data-price-type': 'finalPrice'})['data-price-amount']
+        price =  soup1.find('span', {'data-price-type': 'oldPrice'})['data-price-amount']
         combination = soup1.find('div', {'itemprop': 'description'}).text.strip()
         #combination = driver.find_element_by_xpath('//div[@itemprop="description"]').text
     except:
