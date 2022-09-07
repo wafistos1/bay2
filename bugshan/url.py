@@ -44,9 +44,9 @@ def getnextpage(soup):
 
 
 list_urls = [
-    # {'cat1': 'تلفزيونات', 'cat2': 'تلفزيونات OLED', 'cat3': '', 'url': 'https://bugshan.co/ar/%D8%AA%D9%84%D9%81%D8%B2%D9%8A%D9%88%D9%86%D8%A7%D8%AA-oled/c1344902162'},
-    # {'cat1': 'تلفزيونات', 'cat2': 'تلفزيونات NanoCell', 'cat3': '', 'url': 'https://bugshan.co/ar/%D8%AA%D9%84%D9%81%D8%B2%D9%8A%D9%88%D9%86%D8%A7%D8%AA-nanocell/c461705246'},
-    # {'cat1': 'تلفزيونات', 'cat2': 'تلفزيونات UHD 4K', 'cat3': '', 'url': 'https://bugshan.co/ar/%D8%AA%D9%84%D9%81%D8%B2%D9%8A%D9%88%D9%86%D8%A7%D8%AA-uhd-4k/c1969372959'},
+    {'cat1': 'تلفزيونات', 'cat2': 'تلفزيونات OLED', 'cat3': '', 'url': 'https://bugshan.co/ar/%D8%AA%D9%84%D9%81%D8%B2%D9%8A%D9%88%D9%86%D8%A7%D8%AA-oled/c1344902162'},
+    {'cat1': 'تلفزيونات', 'cat2': 'تلفزيونات NanoCell', 'cat3': '', 'url': 'https://bugshan.co/ar/%D8%AA%D9%84%D9%81%D8%B2%D9%8A%D9%88%D9%86%D8%A7%D8%AA-nanocell/c461705246'},
+    {'cat1': 'تلفزيونات', 'cat2': 'تلفزيونات UHD 4K', 'cat3': '', 'url': 'https://bugshan.co/ar/%D8%AA%D9%84%D9%81%D8%B2%D9%8A%D9%88%D9%86%D8%A7%D8%AA-uhd-4k/c1969372959'},
     
     # {'cat1': 'الفيديو و الأجهزة الصوتية', 'cat2': 'مكبرات الصوت', 'cat3': '', 'url': 'https://bugshan.co/ar/%D9%85%D9%83%D8%A8%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%B5%D9%88%D8%AA/c711858278'},
     # {'cat1': 'الفيديو و الأجهزة الصوتية', 'cat2': 'أنظمة المسرح المنزلي', 'cat3': '', 'url': 'https://bugshan.co/ar/%D8%A3%D9%86%D8%B8%D9%85%D8%A9-%D8%A7%D9%84%D9%85%D8%B3%D8%B1%D8%AD-%D8%A7%D9%84%D9%85%D9%86%D8%B2%D9%84%D9%8A/c2111538274'},
@@ -84,7 +84,7 @@ list_urls = [
     # {'cat1': 'اجهزة التكييف', 'cat2': 'منقي الهواء', 'cat3': '', 'url': 'https://bugshan.co/ar/%D9%85%D9%86%D9%82%D9%8A-%D8%A7%D9%84%D9%87%D9%88%D8%A7%D8%A1/c1469339041'},
     # {'cat1': 'اجهزة التكييف', 'cat2': 'ستارة هوائية', 'cat3': '', 'url': 'https://bugshan.co/ar/%D8%B3%D8%AA%D8%A7%D8%B1%D8%A9-%D9%87%D9%88%D8%A7%D8%A6%D9%8A%D8%A9/c1445973671'},
     
-    {'cat1': 'العناية الشخصية', 'cat2': '', 'cat3': '', 'url': 'https://bugshan.co/ar/%D8%A7%D9%84%D8%B9%D9%86%D8%A7%D9%8A%D8%A9-%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A%D8%A9/c512851578'},
+    # {'cat1': 'العناية الشخصية', 'cat2': '', 'cat3': '', 'url': 'https://bugshan.co/ar/%D8%A7%D9%84%D8%B9%D9%86%D8%A7%D9%8A%D8%A9-%D8%A7%D9%84%D8%B4%D8%AE%D8%B5%D9%8A%D8%A9/c512851578'},
     
 ]
 

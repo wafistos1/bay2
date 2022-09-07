@@ -134,6 +134,6 @@ for i, url in enumerate(list_urls):
     data = scrape_data(url)
     df1 = pd.DataFrame([data])
     df = pd.concat([df, df1], ignore_index=True)
-    df.to_excel('bugshan_product_update.xlsx')
+    df.to_excel('bugshan_product_update1.xlsx')
 logging.info('Scraping products Done..')
 
