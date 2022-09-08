@@ -39,7 +39,7 @@ df['out_of_stock_qty'] = -5
 df['product_online'] = df['is_in_stock']
 try:
     df['price'] = df['price'].str.replace(',', '').str.strip()
-    df['special_price'] = df['price'].str.replace(',', '').str.strip()
+    df['special_price'] = df['special_price'].str.replace(',', '').str.strip()
 except:
     pass
 # df['special_price'] = df['special_price'].str.replace('.', '').str.replace('رس', '').str.replace(',', '.').str.replace('ر.س', '').str.replace('ر.س', '').str.strip()
@@ -137,5 +137,5 @@ df = df[['sku number only', 'sku', 'store_view_code', 'attribute_set_code', 'pro
     , 'is_in_stock',  'supplier'
         ]]
 
-df.to_excel(f'العناية الشخصيةate_product_clean.xlsx')
+df.to_excel(f'اجهزة التكييف_product_clean.xlsx')
 
