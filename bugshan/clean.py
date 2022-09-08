@@ -137,5 +137,5 @@ df = df[['sku number only', 'sku', 'store_view_code', 'attribute_set_code', 'pro
     , 'is_in_stock',  'supplier'
         ]]
 
-df.to_excel(f'الأجهزة المنزلية الكبيرةي product_clean.xlsx')
+df.to_excel(f'العناية الشخصية product_clean.xlsx')
 
