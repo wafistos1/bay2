@@ -28,12 +28,12 @@ class Product:
     price : str = ''
     description : str = ''
     base_image : str =  ''
-    add_image :list = field(default_factory=list)
+    add_image : str =''
     cat1 : str = ''
     cat2 : str = ''
     cat3 : str = ''
 
-urls = pd.read_excel('path excel url file')
+urls = pd.read_excel('markets_url_update.xlsx')
 list_urls = []
 for index, row in urls.iterrows():
     list_urls.append(
@@ -46,21 +46,38 @@ for index, row in urls.iterrows():
     )
 
 def scrape_data(url1):
-    cat1 = url1['cat1']
-    cat2 = url1['cat2']
-    cat3 = url1['cat3']
+    product = Product()
+    product.cat1 = url1['cat1']
+    product.cat2 = url1['cat2']
+    product.cat3 = url1['cat3']
     url = url1['url']
     logging.info('URL: %s', url)
+    product.link_url = url
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
+    cookies = {'session': '134-8225175-0355220'}
+    r = requests.get(url, headers=headers, cookies=cookies)
+    soup = BeautifulSoup(r.content, "html.parser")
+    product.name = soup.find('h1', {'class': 'product-details__title'}).text.strip()
+    product.price = soup.find('span', {'class': 'product-price'}).text.replace('ر.س', '').strip()
+    try:
+        product.description = soup.find('h4', {'class': 'product-details__subtitle'}).text.strip()
+    except:
+        pass
+    images = soup.find('div', {'id': 'sp-slider-cont'}).find_all('img')
+    list_images = [ img['src'] for img in images]
+    product.base_image = list_images[0]
+    product.add_images = ','.join(list_images[1: ])
+    return product.__dict__
     
-    return {
-        
-    }
 
-df = pd.read_excel('path excel url file')
-for i, url in enumerate(urls):
+df = pd.read_excel('markets_product_model.xlsx')
+for i, url in enumerate(list_urls):
     logging.info('Count: %s', i)
     data = scrape_data(url)
     df1 = pd.DataFrame([data])
     df = pd.concat([df, df1], ignore_index=True)
-    df.to_excel()
+    df.to_excel('markets_product_update.xlsx')
+    time.sleep(2)
+    
+logging.info('Scraping Products Done.')
 
