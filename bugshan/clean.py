@@ -131,11 +131,11 @@ df = df[['sku number only', 'sku', 'store_view_code', 'attribute_set_code', 'pro
     'product_size',
     'raw_materials',
          'C1', 'C2', 'C3', 'C4' ,'C5' ,'C6' ,'C7', 'C8',
-    'cost', 'price', 'price1.3',  'special_price', 'special_price1.3',  'visibility', 'tax_class_name', 'manufacturer',
+    'cost', 'price',   'special_price',   'visibility', 'tax_class_name', 'manufacturer',
          'news_from_date', 'news_to_date', 'base_image', 'small_image', 'swatch_image' 
     , 'thumbnail_image', 'additionnal_images', 'product_online', 'qty', 'out_of_stock_qty', 'allow_backorders'
     , 'is_in_stock',  'supplier'
         ]]
 
-df.to_excel(f'اجهزة التكييف_product_clean.xlsx')
+df.to_excel(f'الاجهزة المنزلية الصغيرةتي product_clean.xlsx')
 
