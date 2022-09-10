@@ -45,6 +45,7 @@ class Product:
 
 
 def extract_data(driver, url1):
+    product = Product()
     product.cat1 = url1['cat1']
     product.cat2 = url1['cat2']
     product.cat3 = url1['cat3']
@@ -52,7 +53,6 @@ def extract_data(driver, url1):
     logging.info('URL: %s', url)
     driver.get(url)
     time.sleep(2)
-    product = Product()
     body = WebDriverWait(driver,20).until(EC.visibility_of_element_located((By.TAG_NAME,'body')))
     try:
         body.find_element(By.ID, 'wg-ar').click()
@@ -81,7 +81,6 @@ def extract_data(driver, url1):
     return product.__dict__
 
 
-
 urls = pd.read_csv('knothhome_url_mupdate.csv')
 list_urls = []
 for index, row in urls.iterrows():
@@ -101,7 +100,7 @@ def scrape_data(url1, driver):
 df = pd.read_csv('knothhome_product_model.csv')
 for i, url in enumerate(list_urls):
     logging.info('Count: %s', i)
-    data = scrape_data(url)
+    data = scrape_data(url, driver)
     df1 = pd.DataFrame([data])
     df = pd.concat([df, df1], ignore_index=True)
     df.to_excel('knothhome_product_update.xlsx')
