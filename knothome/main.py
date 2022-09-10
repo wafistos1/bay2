@@ -100,7 +100,10 @@ def scrape_data(url1, driver):
 df = pd.read_csv('knothhome_product_model.csv')
 for i, url in enumerate(list_urls):
     logging.info('Count: %s', i)
-    data = scrape_data(url, driver)
+    try:
+        data = scrape_data(url, driver)
+    except:
+        continue
     df1 = pd.DataFrame([data])
     df = pd.concat([df, df1], ignore_index=True)
     df.to_excel('knothhome_product_update.xlsx')

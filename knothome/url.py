@@ -58,16 +58,16 @@ def getnextpage(soup):
 
 
 list_urls = [
-    {'cat1': 'الإكسسوارات', 'cat2': 'المزهريات والعبوات والجرات', 'cat3': '', 'url': 'https://knothome.com/collections/vases-canisters-jars'},
-    {'cat1': 'الإكسسوارات', 'cat2': 'صناديق للديكور', 'cat3': '', 'url': 'https://knothome.com/collections/box'},
-    {'cat1': 'الإكسسوارات', 'cat2': 'الصواني-لوحات-وحاملات الشموع', 'cat3': '', 'url': 'https://knothome.com/collections/trays-plates-candle-holders'},
-    {'cat1': 'الإكسسوارات', 'cat2': 'كراسي للديكور', 'cat3': '', 'url': 'https://knothome.com/collections/stools'},
-    {'cat1': 'الإكسسوارات', 'cat2': 'تماثيل ومنحوتات', 'cat3': '', 'url': 'https://knothome.com/collections/statues-and-sculptures'},
+    # {'cat1': 'الإكسسوارات', 'cat2': 'المزهريات والعبوات والجرات', 'cat3': '', 'url': 'https://knothome.com/collections/vases-canisters-jars'},
+    # {'cat1': 'الإكسسوارات', 'cat2': 'صناديق للديكور', 'cat3': '', 'url': 'https://knothome.com/collections/box'},
+    # {'cat1': 'الإكسسوارات', 'cat2': 'الصواني-لوحات-وحاملات الشموع', 'cat3': '', 'url': 'https://knothome.com/collections/trays-plates-candle-holders'},
+    # {'cat1': 'الإكسسوارات', 'cat2': 'كراسي للديكور', 'cat3': '', 'url': 'https://knothome.com/collections/stools'},
+    # {'cat1': 'الإكسسوارات', 'cat2': 'تماثيل ومنحوتات', 'cat3': '', 'url': 'https://knothome.com/collections/statues-and-sculptures'},
     {'cat1': 'وسائد', 'cat2': 'حزم وسائد مصممة', 'cat3': '', 'url': 'https://knothome.com/collections/designer-bundles'},
     {'cat1': 'وسائد', 'cat2': 'وسائد مفردة', 'cat3': '', 'url': 'https://knothome.com/collections/single-cushions'},
-    {'cat1': 'السجاد', 'cat2': '', 'cat3': '', 'url': 'https://knothome.com/collections/carpets-rugs'},
-    {'cat1': 'اضواء', 'cat2': 'مصابيح الطاولة', 'cat3': '', 'url': 'https://knothome.com/collections/table-lamps'},
-    {'cat1': 'اضواء', 'cat2': 'مصابيح أرضية', 'cat3': '', 'url': 'https://knothome.com/collections/floor-lamps'},
+    # {'cat1': 'السجاد', 'cat2': '', 'cat3': '', 'url': 'https://knothome.com/collections/carpets-rugs'},
+    # {'cat1': 'اضواء', 'cat2': 'مصابيح الطاولة', 'cat3': '', 'url': 'https://knothome.com/collections/table-lamps'},
+    # {'cat1': 'اضواء', 'cat2': 'مصابيح أرضية', 'cat3': '', 'url': 'https://knothome.com/collections/floor-lamps'},
     
     # {'cat1': '', 'cat2': '', 'cat3': '', 'url': ''},
 ]
